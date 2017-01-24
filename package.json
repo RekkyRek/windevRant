@@ -1,0 +1,29 @@
+{
+  "name": "windevrant",
+  "version": "1.0.0",
+  "description": "A Windows Client For DevRant, Optimized For Desktop.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RekkyRek/windevRant.git"
+  },
+  "keywords": [
+    "devrant"
+  ],
+  "author": "RekkyRek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RekkyRek/windevRant/issues"
+  },
+  "homepage": "https://github.com/RekkyRek/windevRant#readme",
+  "devDependencies": {
+    "electron": "^1.4.15",
+    "electron-reload": "^1.1.0"
+  },
+  "dependencies": {
+    "rantscript": "^1.0.2"
+  }
+}
