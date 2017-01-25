@@ -29,6 +29,7 @@ body
     width: 32px
     height: 100px
     float: left
+    margin-bottom: 10px
     button
       height: 32px
       width: 32px
@@ -70,7 +71,22 @@ body
   left: 72px
   overflow-y: scroll
   height: calc(100vh - 46px)
-
+#loadIndicator
+  z-index: -10
+  width: calc(100vw - 72px)
+  height: 28px
+  background: #676876
+  position: fixed
+  bottom: -28px
+  right: 0px
+  transition: bottom 0.2s
+  p
+    margin: 0
+    line-height: 28px
+    text-align: center
+    color: white
+#loadIndicator[data-loading="true"]
+  bottom: 0px
 #windowBar
   background: #54566A
   height: 46px

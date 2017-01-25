@@ -33,9 +33,11 @@
         <button type="button" name="Up"><i class="fa fa-minus fa-fw" aria-hidden="true"></i><i class="fa fa-minus fa-fw" aria-hidden="true"></i></button>
       </div>
       <p>{{rantobj['text']}}</p>
+      <!--<img v-if="rantobj['attached_image'] != ''" :src="rantobj['attatched_image']['url']" alt="">-->
        <i class="fa fa-comments" aria-hidden="true"><p>{{rantobj['num_comments']}}</p></i>
       <div class="spacer"></div>
     </div>
   </div>
+  <div id="loadIndicator"><p>Loading...</p></div>
 </body>
 </html>

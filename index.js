@@ -5,14 +5,19 @@ window.onload = function () {
   const fs = require('fs');
   var cursorX;
   var cursorY;
+  var loadingRants = false;
   document.onmousemove = function(e){
       cursorX = e.pageX;
       cursorY = e.pageY;
   }
 
   var menuopen = false;
-
   setInterval(()=>{
+    var rantscont = document.getElementById('rants');
+    if(rantscont.scrollTop + window.innerHeight >= rantscont.scrollHeight + 28 && !loadingRants) {
+      loadNextRants();
+    }
+
     if(cursorX < 70 && !menuopen) {
       document.getElementById('sidebar').setAttribute('data-active', 'true');
       menuopen = true;
@@ -23,7 +28,7 @@ window.onload = function () {
       menuopen = false;
     }
 
-  },10);
+  },100);
 
 
   var app = new Vue({
@@ -33,13 +38,26 @@ window.onload = function () {
       ]
     }
   })
-
   devRant
-    .rants('algo', 10, 0)
+    .rants('algo', 25, app.rants.length)
     .then((response)=>{
-      for (var i = 0; i < response.length; i++) {
-        app.rants.push(response[i]);
-      }
+
       console.log(response);
+
     })
+
+  function loadNextRants() {
+    loadingRants = true;
+    document.getElementById('loadIndicator').setAttribute('data-loading', 'true');
+    devRant
+      .rants('algo', 25, app.rants.length)
+      .then((response)=>{
+        for (var i = 0; i < response.length; i++) {
+          app.rants.push(response[i]);
+        }
+        console.log(response);
+        loadingRants = false;
+        document.getElementById('loadIndicator').setAttribute('data-loading', 'false');
+      })
+  }
 }
