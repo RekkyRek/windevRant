@@ -26,43 +26,14 @@
     <i class="fa fa-gear fa-fw" aria-hidden="true" style="margin-bottom: 20px"><span>Settings</span></i>
   </div>
   <div id="rants">
-    <div class="rant">
+    <div class="rant" v-for="rantobj in rants">
       <div class="rantleft">
         <button type="button" name="Up"><i class="fa fa-plus fa-fw" aria-hidden="true"></i><i class="fa fa-plus fa-fw" aria-hidden="true"></i></button>
-        <p>27</p>
+        <p>{{rantobj['score']}}</p>
         <button type="button" name="Up"><i class="fa fa-minus fa-fw" aria-hidden="true"></i><i class="fa fa-minus fa-fw" aria-hidden="true"></i></button>
       </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-       <i class="fa fa-comments" aria-hidden="true"><p>7</p></i>
-      <div class="spacer"></div>
-    </div>
-    <div class="rant">
-      <div class="rantleft">
-        <button type="button" name="Up"><i class="fa fa-plus fa-fw" aria-hidden="true"></i><i class="fa fa-plus fa-fw" aria-hidden="true"></i></button>
-        <p>27</p>
-        <button type="button" name="Up"><i class="fa fa-minus fa-fw" aria-hidden="true"></i><i class="fa fa-minus fa-fw" aria-hidden="true"></i></button>
-      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-       <i class="fa fa-comments" aria-hidden="true"><p>7</p></i>
-      <div class="spacer"></div>
-    </div>
-    <div class="rant">
-      <div class="rantleft">
-        <button type="button" name="Up"><i class="fa fa-plus fa-fw" aria-hidden="true"></i><i class="fa fa-plus fa-fw" aria-hidden="true"></i></button>
-        <p>27</p>
-        <button type="button" name="Up"><i class="fa fa-minus fa-fw" aria-hidden="true"></i><i class="fa fa-minus fa-fw" aria-hidden="true"></i></button>
-      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-       <i class="fa fa-comments" aria-hidden="true"><p>7</p></i>
+      <p>{{rantobj['text']}}</p>
+       <i class="fa fa-comments" aria-hidden="true"><p>{{rantobj['num_comments']}}</p></i>
       <div class="spacer"></div>
     </div>
   </div>
