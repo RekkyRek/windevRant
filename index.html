@@ -13,31 +13,48 @@
 <body>
   <div id="windowBar"></div>
   <div id="sidebar" data-active="false">
-    <i class="fa fa-user-circle-o fa-fw" aria-hidden="true" style="margin-top: 20px"><span>Dacexi</span></i>
+    <i class="fa fa-user-circle-o fa-fw"  v-on:click="setSidebarActive(0)" aria-hidden="true" data-active="false" style="margin-top: 20px"><span> {{username}}</span></i>
     <div style="flex:2"></div>
-    <i class="fa fa-plus fa-fw" aria-hidden="true"><span>New Rant</span></i>
-    <i class="fa fa-search fa-fw" aria-hidden="true"><span>Search</span></i>
-    <i class="fa fa-bars fa-fw" aria-hidden="true"><span>Rants</span></i>
-    <i class="fa fa-file-text-o fa-fw" aria-hidden="true"><span>Stories</span></i>
-    <i class="fa fa-calendar-o fa-fw" aria-hidden="true"><span>Weekly rants</span></i>
-    <i class="fa fa-shopping-cart fa-fw" aria-hidden="true"><span>Swag</span></i>
-    <i class="fa fa-comment fa-fw" aria-hidden="true"><span>Feedback</span></i>
+    <i class="fa fa-bars fa-fw"           v-on:click="setSidebarActive(2)" aria-hidden="true" data-active="true" ><span>Rants       </span></i>
+    <i class="fa fa-plus fa-fw"           v-on:click="setSidebarActive(3)" aria-hidden="true" data-active="false"><span>New Rant    </span></i>
+    <i class="fa fa-search fa-fw"         v-on:click="setSidebarActive(4)" aria-hidden="true" data-active="false"><span>Search      </span></i>
+    <i class="fa fa-file-text-o fa-fw"    v-on:click="setSidebarActive(5)" aria-hidden="true" data-active="false"><span>Stories     </span></i>
+    <i class="fa fa-calendar-o fa-fw"     v-on:click="setSidebarActive(6)" aria-hidden="true" data-active="false"><span>Weekly rants</span></i>
+    <i class="fa fa-shopping-cart fa-fw"  v-on:click="setSidebarActive(7)" aria-hidden="true" data-active="false"><span>Swag        </span></i>
+    <i class="fa fa-comment fa-fw"        v-on:click="setSidebarActive(8)" aria-hidden="true" data-active="false"><span>Feedback    </span></i>
     <div style="flex:2"></div>
-    <i class="fa fa-gear fa-fw" aria-hidden="true" style="margin-bottom: 20px"><span>Settings</span></i>
+    <i class="fa fa-gear fa-fw"           v-on:click="setSidebarActive(10)"aria-hidden="true" data-active="false" style="margin-bottom: 20px"><span>Settings</span></i>
   </div>
   <div id="rants">
     <div class="rant" v-for="rantobj in rants">
       <div class="rantleft">
-        <button type="button" name="Up"><i class="fa fa-plus fa-fw" aria-hidden="true"></i><i class="fa fa-plus fa-fw" aria-hidden="true"></i></button>
+        <button type="button" name="Up" v-on:click="vote(rantobj['id'], 1); if(rantobj['vote_state']==1){rantobj['score']+=2}else{rantobj['score']++} rantobj['vote_state'] = 2;">
+          <i class="fa fa-plus fa-fw" aria-hidden="true"></i><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+        </button>
         <p>{{rantobj['score']}}</p>
-        <button type="button" name="Up"><i class="fa fa-minus fa-fw" aria-hidden="true"></i><i class="fa fa-minus fa-fw" aria-hidden="true"></i></button>
+        <button type="button" name="Down" v-on:click="vote(rantobj['id'], 0); if(rantobj['vote_state']==2){rantobj['score']-=2}else{rantobj['score']--} rantobj['vote_state'] = 1; ">
+          <i class="fa fa-minus fa-fw" aria-hidden="true"></i><i class="fa fa-minus fa-fw" aria-hidden="true"></i>
+        </button>
       </div>
       <p>{{rantobj['text']}}</p>
-      <!--<img v-if="rantobj['attached_image'] != ''" :src="rantobj['attatched_image']['url']" alt="">-->
+      <div v-if='rantobj["attached_image"] != ""' class="rantimg">
+        <img :src='rantobj["attached_image"]["url"]'>
+      </div>
        <i class="fa fa-comments" aria-hidden="true"><p>{{rantobj['num_comments']}}</p></i>
       <div class="spacer"></div>
     </div>
   </div>
   <div id="loadIndicator"><p>Loading...</p></div>
+  <div id="loginScreen" style="display: none">
+    <div id="loginContainer">
+      <h1>Login</h1>
+      <div id="loginError" data-active="false"><span>Login Failed</span>, <span>Check your credentials.</span></div>
+      <form class="" id="loginForm">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input type="submit" name="submit" value="Login" style="background: #C14857; color: white; width:322px">
+      </form>
+    </div>
+  </div>
 </body>
 </html>

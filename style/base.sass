@@ -7,13 +7,65 @@ body
     font-family: 'Segoe UI', sans-serif
     font-weight: 200
     transform: translateZ(0px)
+#loginScreen
+  z-index: -1
+  background: rgba(0,0,0,0.75)
+  height: calc(100vh - 46px)
+  width: calc(100vw - 72px)
+  position: fixed
+  top: 46px
+  left: 72px
+  #loginContainer
+    width: 350px
+    height: 350px
 
+    border-radius: 3px
+    position: fixed
+    left: calc(50vw - 175px - 36px)
+    top: calc(50vh - 175px - 23px)
+    h1
+      color: white
+      text-align: center
+      font-weight: 400
+      font-size: 48px
+    input
+      width: 300px
+      padding: 10px
+      border-radius: 10px
+      border: 1px solid #54566A
+      margin: 5px
+      margin-left: 14px
+      font-size: 18px
+      &:focus
+        outline: none
+    #loginError
+      color: white
+      color: #d8485a
+      overflow: hidden
+      height: 0px
+      text-align: center
+      font-size: 18px
+      margin-top: 0px
+      transition: height 0.3s, margin-top 0.3s
+      span
+        font-weight: 400 !important
+      span:first-child
+          font-weight: 500 !important
+    #loginError[data-active="true"]
+      margin-top: -20px
+      height: 40px
 .rant
   width: 70%
   position: relative
   left: 15%
   margin-top: 15px
   display: inline-block
+  .rantimg
+    margin-left: 40px
+    img
+      max-width: 70%
+      max-height: 700px
+      border-radius: 10px
   .fa-comments
     margin-left: 33px
     float: right
@@ -124,6 +176,8 @@ body
       display: inline-block
       transition-delay: 50ms
       transition: opacity 0.5s, left 0.5s
+  .fa[data-active="true"]
+    background: #C14857 !important
 #sidebar[data-active="true"]
   width: 250px !important
   .fa span
